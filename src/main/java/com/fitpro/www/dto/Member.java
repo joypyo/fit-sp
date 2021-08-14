@@ -5,13 +5,13 @@ import org.springframework.lang.Nullable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 
 @Getter
 @Setter
-@Builder
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Member {
 
 	private int memberId;
@@ -42,7 +42,5 @@ public class Member {
 	
 	@Nullable
 	private String question;
-	
-	
 
 }

@@ -13,9 +13,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 
 import com.fitpro.www.interceptor.AuthCheckInterceptor;
 
@@ -34,24 +31,21 @@ public class MvcConfig implements WebMvcConfigurer {
 		configurer.enable();
 	}
 
-	@Bean
-	public SpringResourceTemplateResolver templateResolver() {
-		SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-		templateResolver.setApplicationContext(applicationContext);
-		templateResolver.setPrefix("/WEB-INF/view/");
-		templateResolver.setSuffix(".jsp");
-		templateResolver.setCacheable(false);
-		return templateResolver;
-	}
-
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		templateEngine.setEnableSpringELCompiler(true);
-		templateEngine.addDialect(new Java8TimeDialect());
-		return templateEngine;
-	}
+	/*  // thymeleaf 관련 코드
+	 * @Bean public SpringResourceTemplateResolver templateResolver() {
+	 * SpringResourceTemplateResolver templateResolver = new
+	 * SpringResourceTemplateResolver();
+	 * templateResolver.setApplicationContext(applicationContext);
+	 * templateResolver.setPrefix("/WEB-INF/views/");
+	 * templateResolver.setSuffix(".html"); templateResolver.setCacheable(false);
+	 * return templateResolver; }
+	 * 
+	 * @Bean public SpringTemplateEngine templateEngine() { SpringTemplateEngine
+	 * templateEngine = new SpringTemplateEngine();
+	 * templateEngine.setTemplateResolver(templateResolver());
+	 * templateEngine.setEnableSpringELCompiler(true); templateEngine.addDialect(new
+	 * Java8TimeDialect()); return templateEngine; }
+	 */
 
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
